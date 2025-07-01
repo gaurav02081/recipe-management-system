@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipes</title>
+    <style>
+        body {
+            background: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 2rem 2.5rem 1.5rem 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        input[type="text"], textarea, input[type="file"] {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        textarea {
+            min-height: 80px;
+        }
+        button {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1> ADD RECIPES </h1>
+    <hr>
+    <div class="container">
+        <form  method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+            <div class="mb-3">
+              <label for="recipe_name" class="form-label">Recipe Name</label>
+              <input name="recipe_name" required  type="text" class="form-control" id="recipe_name">
+            </div>
+            <div class="mb-3">
+              <label for="recipe_description"  class="form-label">Recipe Description</label>
+              <textarea  class="form-control" name="recipe_description"  id="recipe_description" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="recipe_image" class="form-label">Recipe Image</label>
+                <input name="recipe_image" type="file" class="form-control" id="recipe_image">
+            </div>
+            <button type="submit" class="btn btn-success">ADD RECIPES</button>
+        </form>
+    </div>
+    <!-- FORM VERSION - This is the ONLY correct recipes.html hello-->
+</body>
+</html>
