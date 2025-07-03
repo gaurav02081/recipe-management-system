@@ -5,77 +5,211 @@
     <title>Recipes</title>
     <style>
         body {
-            background: #f8f9fa;
+            background: linear-gradient(120deg, #e0eafc 60%, #cfdef3 100%);
             font-family: Arial, sans-serif;
+            min-height: 100vh;
+            margin: 0;
         }
         .container {
-            max-width: 500px;
+            max-width: 650px;
             margin: 40px auto;
             background: #fff;
-            padding: 2rem 2.5rem 1.5rem 2.5rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 2.5rem 2.5rem 2rem 2.5rem;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
         }
         h1 {
             text-align: center;
-            color: #333;
+            color: #007bff;
             margin-bottom: 1.5rem;
+            letter-spacing: 1px;
         }
         label {
             font-weight: bold;
             margin-bottom: 0.5rem;
             display: block;
+            color: #333;
         }
         input[type="text"], textarea, input[type="file"] {
             width: 100%;
-            padding: 0.5rem;
+            padding: 0.6rem;
             margin-bottom: 1rem;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 1rem;
+            background: #f8f9fa;
+            transition: border 0.2s;
+        }
+        input[type="text"]:focus, textarea:focus, input[type="file"]:focus {
+            border: 1.5px solid #007bff;
+            background: #fff;
         }
         textarea {
             min-height: 80px;
         }
-        button {
-            background: #28a745;
+        button, .btn {
+            background: linear-gradient(90deg, #007bff 60%, #0056b3 100%);
             color: #fff;
             border: none;
             padding: 0.7rem 1.5rem;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
+            margin-right: 0.5rem;
+            margin-bottom: 0.2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
             transition: background 0.2s;
+            display: inline-block;
         }
-        button:hover {
-            background: #218838;
+        button:hover, .btn:hover {
+            background: #0056b3;
+            color: #ffd700;
+        }
+        .btn.btn-primary {
+            background: linear-gradient(90deg, #ffd700 60%, #ffb300 100%);
+            color: #007bff;
+        }
+        .btn.btn-primary:hover {
+            background: #fff;
+            color: #0056b3;
         }
         .table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
             margin-top: 2rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
         }
         .table th, .table td {
-            border: 1px solid #dee2e6;
-            padding: 0.75rem;
+            border-bottom: 1px solid #e3e3e3;
+            padding: 0.85rem 1rem;
             text-align: left;
         }
         .table th {
-            background-color: #f1f1f1;
+            background-color: #e3f0ff;
+            color: #007bff;
+            font-weight: 600;
         }
-        .table tr:nth-child(even) {
-            background-color: #f9f9f9;
+        .table tr:last-child td {
+            border-bottom: none;
+        }
+        .table tr:hover {
+            background: #eaf6ff;
+            transition: background 0.2s;
+        }
+        .table img {
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .table td form {
+            display: inline;
+        }
+        nav {
+            background: linear-gradient(90deg, #007bff 60%, #0056b3 100%);
+            padding: 0.7rem 0 0.7rem 0;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .navbar-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar-links a {
+            color: #fff;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 1.15rem;
+            margin-right: 2rem;
+            transition: color 0.2s;
+        }
+        .navbar-links a:last-child {
+            margin-right: 0;
+        }
+        .navbar-links a:hover {
+            color: #ffd700;
+        }
+        .navbar-search {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-search input[type="text"] {
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px 0 0 20px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .navbar-search input[type="text"]:focus {
+            border: 1.5px solid #007bff;
+        }
+        .navbar-search button {
+            background: #ffd700;
+            color: #007bff;
+            border: none;
+            padding: 0.4rem 1.1rem;
+            border-radius: 0 20px 20px 0;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .navbar-search button:hover {
+            background: #fff;
+            color: #0056b3;
+        }
+        .navbar-logout a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.3rem 1.1rem;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.08);
+            transition: background 0.2s, color 0.2s;
+        }
+        .navbar-logout a:hover {
+            background: #ffd700;
+            color: #007bff;
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 1.2rem 0.5rem 1rem 0.5rem;
+            }
+            .navbar-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <nav>
+        <div class="navbar-container">
+            <div class="navbar-links">
+                <a href="/recipes/">Recipes</a>
+                <a href="/recipes/#add">Add Recipe</a>
+            </div>
+            <form method="get" action="" class="navbar-search">
+                <input type="text" name="q" placeholder="Search recipes..." value="{{ request.GET.q }}">
+                <button type="submit">Search</button>
+            </form>
+            <div class="navbar-logout">
+                <a href="/logout/">Logout</a>
+            </div>
+        </div>
+    </nav>
     <h1> ADD RECIPES </h1>
     <hr>
     <div class="container">
-        <form method="get" action="" style="margin-bottom: 1rem;">
-            <input type="text" name="q" placeholder="Search recipes..." value="{{ request.GET.q }}">
-            <button type="submit">Search</button>
-        </form>
+       
         <form  method="post" enctype="multipart/form-data">
           {% csrf_token %}
             <div class="mb-3">
@@ -127,6 +261,7 @@
               {% endfor %}
             </tbody>
           </table>
+          <a href="{% url 'logout' %}">Logout</a>
     </div>
 </body>
 </html>

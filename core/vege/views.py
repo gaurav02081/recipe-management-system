@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from .models import Recipe
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='/login/')
 def recipes(request):
     query = request.GET.get('q')
     if query:
@@ -90,5 +92,6 @@ def registration_view(request):
     return render(request, 'vege/registration.html')
 
 def logout_view(request):
-    return render(request, 'vege/logout.html')
+    logout(request)
+    return redirect('/login/')
 

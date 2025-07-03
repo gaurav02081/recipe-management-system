@@ -19,7 +19,7 @@ from django.urls import path , include
 from vege.views import *
 from django.conf import settings
 from django.conf.urls.static import static
-from vege.views import delete_recipe, update_recipe , login_view , registration_view
+from vege.views import delete_recipe, update_recipe , login_view , registration_view, logout_view
  
 
 urlpatterns = [ 
@@ -30,6 +30,7 @@ urlpatterns = [
     path('update_recipe/<int:id>/', update_recipe, name='update_recipe'),
     path('login/', login_view, name='login'),
     path('registration/', registration_view, name='registration'),
+    path('logout/', logout_view, name='logout'),
 ]
 
 if settings.DEBUG:
