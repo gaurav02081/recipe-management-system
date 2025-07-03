@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant U as User
+    participant B as Browser
+    participant S as Django Server
+
+    U->>B: Clicks "Update" on a recipe
+    B->>S: GET /update_recipe/3/
+    S->>B: Renders update_recipe.html with recipe data
+    U->>B: Edits form and submits
+    B->>S: POST /update_recipe/3/ (with new data)
+    S->>S: Updates recipe in DB
+    S->>B: Redirects to /recipes/
+    B->>U: Shows updated recipes list

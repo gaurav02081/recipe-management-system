@@ -17,9 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path , include
 from vege.views import *
+from django.conf import settings
+from django.conf.urls.static import static
+from vege.views import delete_recipe, update_recipe
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('recipes/', include('vege.urls')),
+    path('delete_recipe/<int:id>/', delete_recipe, name='delete_recipe'),
+    path('update_recipe/<int:id>/', update_recipe, name='update_recipe'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
