@@ -19,14 +19,17 @@ from django.urls import path , include
 from vege.views import *
 from django.conf import settings
 from django.conf.urls.static import static
-from vege.views import delete_recipe, update_recipe
+from vege.views import delete_recipe, update_recipe , login_view , registration_view
+ 
 
-urlpatterns = [
+urlpatterns = [ 
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('recipes/', include('vege.urls')),
     path('delete_recipe/<int:id>/', delete_recipe, name='delete_recipe'),
     path('update_recipe/<int:id>/', update_recipe, name='update_recipe'),
+    path('login/', login_view, name='login'),
+    path('registration/', registration_view, name='registration'),
 ]
 
 if settings.DEBUG:

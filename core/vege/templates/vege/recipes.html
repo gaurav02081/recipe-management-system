@@ -72,6 +72,10 @@
     <h1> ADD RECIPES </h1>
     <hr>
     <div class="container">
+        <form method="get" action="" style="margin-bottom: 1rem;">
+            <input type="text" name="q" placeholder="Search recipes..." value="{{ request.GET.q }}">
+            <button type="submit">Search</button>
+        </form>
         <form  method="post" enctype="multipart/form-data">
           {% csrf_token %}
             <div class="mb-3">
@@ -118,6 +122,8 @@
                   <a href="{% url 'update_recipe' recipe.id %}" class="btn btn-primary">Update</a>
                 </td>
               </tr>
+              {% empty %}
+              <tr><td colspan="5">No recipes found.</td></tr>
               {% endfor %}
             </tbody>
           </table>
